@@ -1,9 +1,9 @@
 {
   "permissions": {
     "allow": [
-        "webSearch",
-        "webFetch",
-        "bash"
+        "WebSearch",
+        "WebFetch",
+        "Bash"
     ]
   }
 }
