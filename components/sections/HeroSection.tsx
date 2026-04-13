@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/layout/Container'
+import { useAnimateOnView } from '@/hooks/useAnimateOnView'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 import { PROJECT_NAME } from '@/lib/constants'
 import { Star, Sparkles } from 'lucide-react'
@@ -11,8 +12,10 @@ import { Star, Sparkles } from 'lucide-react'
 // 홈페이지 Hero 섹션
 // 타이틀, 서브타이틀, CTA 버튼들이 스테거 애니메이션으로 진입
 export function HeroSection() {
+  const { ref, isInView } = useAnimateOnView()
+
   return (
-    <section className="relative py-20 sm:py-28 lg:py-36 overflow-hidden">
+    <section ref={ref} className="relative py-20 sm:py-28 lg:py-36 overflow-hidden">
       {/* 배경 그래디언트 효과 */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-primary/20 via-transparent to-transparent rounded-full blur-3xl opacity-30 dark:opacity-20" />
@@ -22,7 +25,7 @@ export function HeroSection() {
         <motion.div
           className="flex flex-col items-center gap-8 text-center lg:gap-12"
           initial="initial"
-          animate="animate"
+          animate={isInView ? 'animate' : 'initial'}
           variants={staggerContainer}
         >
           {/* 배지 */}
@@ -58,14 +61,13 @@ export function HeroSection() {
           {/* CTA 버튼들 */}
           <motion.div variants={staggerItem} className="flex flex-col sm:flex-row gap-4 pt-4">
             <Link href="/examples">
-              <Button size="lg" className="text-base">
+              <Button asChild size="lg" className="text-base">
                 컴포넌트 보기
               </Button>
             </Link>
             <Link href="/examples/layout">
-              <Button size="lg" variant="outline" className="text-base gap-2">
-                <Star className="h-5 w-5" />
-                레이아웃 예제
+              <Button asChild size="lg" variant="outline" className="text-base gap-2">
+                <span><Star className="h-5 w-5" />레이아웃 예제</span>
               </Button>
             </Link>
           </motion.div>

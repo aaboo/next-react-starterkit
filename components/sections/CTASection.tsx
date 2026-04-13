@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/layout/Container'
@@ -36,10 +37,14 @@ export function CTASection() {
               </p>
             </div>
 
-            <Button size="lg" className="text-base gap-2">
-              프로젝트 시작하기
-              <ArrowRight className="h-5 w-5" />
-            </Button>
+            <Link href="/examples">
+              <Button asChild size="lg" className="text-base gap-2">
+                <span>
+                  프로젝트 시작하기
+                  <ArrowRight className="h-5 w-5" />
+                </span>
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </Container>

@@ -112,11 +112,11 @@ export default function ExamplesPage() {
                         </Badge>
                       ))}
                     </div>
-                    <Link href={item.href} className="w-full">
-                      <Button className="w-full">
+                    <Button asChild className="w-full">
+                      <Link href={item.href}>
                         예제 보기
-                      </Button>
-                    </Link>
+                      </Link>
+                    </Button>
                   </CardContent>
                 </Card>
               </motion.div>
