@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/layout/Container'
-import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations'
+import { staggerContainer, staggerItem } from '@/lib/animations'
+import { PROJECT_NAME } from '@/lib/constants'
 import { Star, Sparkles } from 'lucide-react'
 
 // 홈페이지 Hero 섹션
@@ -29,7 +30,7 @@ export function HeroSection() {
             <div className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2">
               <Sparkles className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium">
-                Claude Code 마스터리 · Section 13
+                {PROJECT_NAME}
               </span>
             </div>
           </motion.div>
